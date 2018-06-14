@@ -27,14 +27,6 @@ Install_mysql(){
     apt install -y mariadb-server mariadb-client &>/dev/null && echo "Ok" || echo "Failed"
     sudo mysql -u root -e  "use mysql;UPDATE user SET PASSWORD=PASSWORD('memo123') where user='root';update user set plugin='' where User='root';flush privileges"
 }
-
-Download_template(){
-    wget REPOSITORIES
-    rm /etc/nginx/sites-enabled/default
-    mv template /etc/nginx/sites-available/
-    ln -s  /etc/nginx/sites-available/template /etc/nginx/sites-enabled/
-}
-
 if [ $USER == root ]
 then
     Update_repositories
