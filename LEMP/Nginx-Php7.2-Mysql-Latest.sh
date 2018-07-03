@@ -27,12 +27,24 @@ Install_mysql(){
     apt install -y mariadb-server mariadb-client &>/dev/null && echo "Ok" || echo "Failed"
     sudo mysql -u root -e  "use mysql;UPDATE user SET PASSWORD=PASSWORD('memo123') where user='root';update user set plugin='' where User='root';flush privileges"
 }
+Add_to_boot(){
+    systemctl enable mysql.service
+    systemctl enable nginx.service
+    systemctl enable php7.2-fpm.service
+}
+Start_services(){
+    systemctl start mysql.service
+    systemctl start nginx.service
+    systemctl start php7.2-fpm.service
+}
 if [ $USER == root ]
 then
     Update_repositories
     Install_php72
     Install_nginx
     Install_mysql
+    Add_to_boot
+    Start_services
 else
     echo "You must run the script with super user privileges"
 fi
