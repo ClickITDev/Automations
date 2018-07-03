@@ -1,6 +1,6 @@
 server {
         server_name www.SITE SITE;
-        listen IP:80;
+        listen IPV4:80;
         root /var/www/SITE;
         index index.php index.html index.htm;
 
