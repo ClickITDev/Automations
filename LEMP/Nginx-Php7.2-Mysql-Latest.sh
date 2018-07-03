@@ -25,7 +25,8 @@ Install_nginx (){
 Install_mysql(){
     echo "Installing MySQL"
     apt install -y mariadb-server mariadb-client &>/dev/null && echo "Ok" || echo "Failed"
-    sudo mysql -u root -e  "use mysql;UPDATE user SET PASSWORD=PASSWORD('memo123') where user='root';update user set plugin='' where User='root';flush privileges"
+    read -p 'Insert root password for MySQL: ' rootpasswd
+    sudo mysql -u root -e  "use mysql;UPDATE user SET PASSWORD=PASSWORD('$rootpasswd') where user='root';update user set plugin='' where User='root';flush privileges"
 }
 Add_to_boot(){
     systemctl enable mysql.service
