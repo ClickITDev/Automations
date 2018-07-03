@@ -1,7 +1,7 @@
 server {
         server_name www.SITE SITE;
-        listen IP:PUERTO;
-        root /home/SITE/public_html;
+        listen IP:80;
+        root /var/www/SITE;
         index index.php index.html index.htm;
 
         access_log /var/log/nginx/SITE_access_log;
