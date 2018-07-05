@@ -7,3 +7,4 @@ Some Services that Are Available are:
 
 - LEMP Installation
 - NGINX Optimization and Security
+- Wordpress files to add to the vhost
